@@ -13,7 +13,14 @@
          // Update temperature trend chart image
          var tempUrl = "charts/Temp" + state + ".png";
         document.getElementById("tempImage").src = tempUrl;
+        // Ensure the temperature image is visible (it might have been hidden before)
         document.getElementById("tempImage").style.display = "block";
+
+        // Update temperature trend chart image
+        var waterUrl = "charts/water" + state + ".png";
+        document.getElementById("waterImage").src = waterUrl;
+        // Ensure the temperature image is visible (it might have been hidden before)
+        document.getElementById("waterImage").style.display = "block";
       }
     </script>
   </head>
@@ -25,6 +32,7 @@
     margin: 0;
     padding: 20px;
     place-items: center;
+    justify-content: center;
     }
     .content {
       text-align: center;
@@ -52,7 +60,7 @@
   </style>
     <p>
     <label for="stateSelect">Select a Biomass Productivity chart to view:</label>
-      <select id="stateSelect" onchange="changeChart()" name="state">
+    <select id="stateSelect" onchange="changeChart()" name="state">
       <option value="Select a Region" default>Select a Region</option>
       <option value="California">California</option>
       <option value="Florida">Florida</option>
@@ -64,12 +72,14 @@
       <option value="SouthNorth">Productivity Gradient</option>
     </select>
     </p>
-    
+
     <img id="chartImage" src="charts/algae_cover.png" alt="Biomass Trend Chart"
       onerror="this.style.display='none';">
 
-    <br>
-    <img id="tempImage" src="charts/TempmidconUS.jpg" alt="Temperature Trend Chart"
+    <img id="tempImage" src="charts/TempMidconUS.jpg" alt="Temperature Trend Chart"
+         onerror="this.style.display='none';">
+
+    <img id="waterImage" src="charts/waterMidconUS.jpg" alt="Water Stress Levels"
          onerror="this.style.display='none';">
   </body>
 </html>
