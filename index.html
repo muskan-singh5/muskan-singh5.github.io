@@ -4,23 +4,36 @@
     <meta charset="UTF-8">
     <title>Biomass Productivity from 1979 - 2020</title>
     <script>
+      function resizeImage(img) {
+          img.onload = function() {
+          var img = this;
+          if (img.naturalWidth > 700) {
+            img.style.width = '650px';
+          }
+        }
+      }
       function changeChart() {
         var state = document.getElementById("stateSelect").value;
         var url = "charts/" + state + ".png";
-        document.getElementById("chartImage").src = url;
-        document.getElementById("chartImage").style.display = "block";
+        var chartImage = document.getElementById("chartImage");
+        chartImage.src = url;
+        chartImage.style.display = "block";
+        resizeImage(chartImage);
 
          // Update temperature trend chart image
-         var tempUrl = "charts/Temp" + state + ".png";
-        document.getElementById("tempImage").src = tempUrl;
+        var tempUrl = "charts/Temp" + state + ".png";
+        var tempImage = document.getElementById("tempImage");
+        tempImage.src = tempUrl;
         // Ensure the temperature image is visible (it might have been hidden before)
-        document.getElementById("tempImage").style.display = "block";
+        tempImage.style.display = "block";
+        resizeImage(tempImage);
 
-        // Update temperature trend chart image
-        var waterUrl = "charts/water" + state + ".png";
+        // Update water trend chart image
+        var waterUrl = "charts/water" + state + ".png"
         document.getElementById("waterImage").src = waterUrl;
         // Ensure the temperature image is visible (it might have been hidden before)
         document.getElementById("waterImage").style.display = "block";
+
       }
     </script>
   </head>
@@ -73,7 +86,6 @@
       <option value="SouthNorth">Productivity Gradient</option>
     </select>
     </p>
-
     <img id="chartImage" src="charts/algae_cover.png" alt="Biomass Trend Chart"
       onerror="this.style.display='none';">
 
